@@ -6,8 +6,23 @@ public class Basic100 {
 
     public static void main(String args[]) throws IOException {
 
-
     }
+}
+
+    /* 코드업 1082번 문제
+    * 2022-05-19
+    * 16진수 구구단 출력
+    * String → 16진수 : Integer.decode("0x" + str);
+    * 16진수 → String : Integer.toHexString(hex);
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int temp = Integer.decode("0x"+br.readLine());
+
+        for(int i = 1; i <= 15; i++){
+            System.out.printf("%X*%X=%X\n",temp,i,temp*i);
+        }
+    }*/
+
 
     /* 코드업 1025번 문제
     * 2022-05-10
@@ -49,4 +64,3 @@ public class Basic100 {
         System.out.println("\u250c\u252c\u2510\n\u251c\u253c\u2524\n\u2514\u2534\u2518");
 
     }*/
-}
