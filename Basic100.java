@@ -2,10 +2,65 @@ import java.io.*;
 
 public class Basic100 {
 
+    /* 코드업 1099번 문제
+     * 2022-05-26
+     * 2차원배열에서 먹이를 찾아 이동하기
+    * */
     public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int[][] matrix = new int[10][10];
+        String[] str = null;
 
+        //10*10 미로 입력 받기
+        for(int i = 0; i < 10; i++){
+            str = br.readLine().split(" ");
+            for(int j = 0; j< 10; j++){
+                matrix[i][j] = Integer.parseInt(str[j].trim());
+            }
+        }
+
+        //처음시작은 1,1
+        int x = 1;
+        int y = 1;
+
+        while(true){
+            //먹이를 찾았는가?
+            if(matrix[x][y] == 2){
+                matrix[x][y] = 9;
+                break;
+            }
+
+            //오른쪽으로 이동을 시도
+            if(matrix[x][y+1] == 1) { //오른쪽 이동불가
+                //아래쪽으로 이동을 시도
+                if(matrix[x+1][y] == 1){ //아래쪽 이동불가
+                    matrix[x][y] = 9;
+                    break;
+                }
+                else if(true){ //아래쪽 이동가능
+                    matrix[x][y] = 9;
+                    x++;
+                }
+            }
+            else{//오른쪽 이동가능
+                matrix[x][y] = 9;
+                y++;
+            }
+        }
+
+        //미로 출력하기
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j< 10; j++){
+                System.out.print(matrix[i][j]);
+                System.out.print( j == 9 ? "" : " ");
+            }
+            System.out.print( i == 9 ? "" : "\n");
+        }
     }
 }
+
+
+
 
     /* 코드업 1098번 문제
     * 2022-05-23
