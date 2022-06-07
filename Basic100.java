@@ -2,10 +2,15 @@ import java.io.*;
 
 public class Basic100 {
 
+    public static void main(String args[]) throws IOException {
+
+    }
+}
+
     /* 코드업 1099번 문제
      * 2022-05-26
      * 2차원배열에서 먹이를 찾아 이동하기
-    * */
+     *
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int[][] matrix = new int[10][10];
@@ -56,10 +61,7 @@ public class Basic100 {
             }
             System.out.print( i == 9 ? "" : "\n");
         }
-    }
-}
-
-
+    }*/
 
 
     /* 코드업 1098번 문제
@@ -156,7 +158,7 @@ public class Basic100 {
     /* 코드업 1082번 문제
     * 2022-05-19
     * 16진수 구구단 출력
-    * String → 16진수 : Integer.decode("0x" + str);
+    * String → 16진수 : Integer.decode("0x" + str); 또는 Integer.valueOf(str, 16);
     * 16진수 → String : Integer.toHexString(hex);
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
