@@ -1,17 +1,113 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Greedy {
     /*
-     * 2022-06-06
+     * 2022-06-15
+     * 문제출저: 코드업 3120문제
+     * 문제: 리모컨 최소한으로 눌러서 원하는 온도 맞추기
+     * 배울점: 목표치에 근접해야 한다 → 거리(절대값)를 판단해야 한다
+     */
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] str = br.readLine().split(" ");
+        int a = Integer.parseInt(str[0]);
+        int b = Integer.parseInt(str[1]);
+        int[] select = {1, 5, 10, -1, -5, -10}; //리모컨 선택할 수 있는 숫자
+        int count = 0; //리모컨 누른 횟수
+
+        int distance = 0; //이동 후 목표와의 거리
+        int minDistance = 0; //거리 중 최소값
+        int min = 0; //거리 최소값의 인덱스
+
+        while(true)
+        {
+            if(a == b) //목표에 도달
+                break;
+
+            minDistance = Math.abs(a - b + select[0]);
+            min = 0;
+            for(int i = 1; i < 6; i++){
+                distance = Math.abs(a - b + select[i]);
+                if(distance < minDistance){ //거리 제일 작은게 뭔지
+                    minDistance = distance;
+                    min = i;
+                }
+            }
+
+            a += select[min]; //리모컨 누르기
+            count++; //리모컨 누르기
+        }
+
+        System.out.println(count);
+    }
+}
+
+    /*
+     * 2022-06-15
+     * 문제출저: 코드업 3321문제
+     * 문제: 피자에 토핑을 선택할때 달러당 칼로리 수치가 최대가 되는 경우 찾기
+     * 배울점: 탐욕 알고리즘 해법으로 잘 찾아감
+     public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        String str[] = br.readLine().split(" ");
+        int a = Integer.parseInt(str[0]);
+        int b = Integer.parseInt(str[1]);
+        int c = Integer.parseInt(br.readLine());
+        ArrayList<Integer> topping = new ArrayList<Integer>();
+        for(int i = 0; i < n; i++) { topping.add(Integer.parseInt(br.readLine())); }
+
+        double bestPizza = 0; //최고의 달러당 칼로리
+        double temp = 0; //달러당 칼로리
+        double calSum = c; //칼로리 합계
+        double dollar = a; //달러
+
+        //토핑을 칼로리 순서대로 내림차순 정렬
+        topping.sort(Comparator.reverseOrder());
+
+        //토핑을 순회하면서
+        for(int i = 0; i < n; i++){
+            calSum += topping.get(i); //칼로리 합치기
+            dollar += b; //달러 합치기
+            temp = calSum / dollar;
+            if(temp > bestPizza )
+                bestPizza = temp;
+        }
+
+        System.out.println((int)bestPizza);
+    }*/
+
+
+    /*
+     * 2022-06-14
+     * 문제출저: 코드업 3301문제
+     * 문제: 화폐 최소 개수로 거스름돈 거슬러 주기
+     * 배울점: 코드 깔끔하게 잘 짠거 같음
+     public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int next = Integer.parseInt(br.readLine());
+        int result = 0;
+        int[] money = {50000, 10000, 5000, 1000, 500, 100, 50, 10};
+
+        for(int i = 0; i < 8; i++){
+            if(next >= money[i]) { //현재 화폐로 거슬러줄 수 있는지 판단
+                result += next / money[i]; //거스름돈 개수 만큼 증가
+                next = next % money[i]; //거슬러주고 남은 돈
+            }
+            if(next == 0) break; //남은돈이 0원이면 종료
+        }
+        System.out.println(result);
+    }*/
+
+
+    /*
+     * 2022-06-07
      * 문제출저: 동빈나 (이코테 2021 강의 몰아보기) 그리디&구현
      * 문제: 공포도 X 이면 한 그룹에 X명이 있어야 그룹을 만들수있다. 그룹의 최대 수를 구하라
      * 배울점: ArrayList 생성 및 정렬 방법
-     */
-    public static void main(String args[]) throws IOException {
+     public static void main(String args[]) throws IOException {
         while(true) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             int n = Integer.parseInt(br.readLine());
@@ -38,12 +134,10 @@ public class Greedy {
                 }
             }
         }
-    }
+    }*/
 
 
-
-}
-/*
+    /*
     * 2022-06-06
     * 문제출저: 동빈나 (이코테 2021 강의 몰아보기) 그리디&구현
     * 문제: 문자열로 제공되는 숫자들을 앞에서부터 곱하기 혹은 더하기 연산하여 최대값 구하기
@@ -68,6 +162,7 @@ public class Greedy {
         }
     }
     }*/
+
 
     /*
     * 2022-06-06
