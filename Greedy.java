@@ -3,12 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Greedy {
+
+}
     /*
      * 2022-06-15
      * 문제출저: 코드업 3120문제
      * 문제: 리모컨 최소한으로 눌러서 원하는 온도 맞추기
      * 배울점: 목표치에 근접해야 한다 → 거리(절대값)를 판단해야 한다
-     */
+     *        리모컨에서 누를 수 있는 버튼들을 int 배열로 미리 선언해 둔다
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] str = br.readLine().split(" ");
@@ -41,8 +43,7 @@ public class Greedy {
         }
 
         System.out.println(count);
-    }
-}
+    }*/
 
     /*
      * 2022-06-15

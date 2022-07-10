@@ -1,12 +1,10 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 
-public class Basic100 {
+public class Basic100  {
 
-    public static void main(String args[]) throws IOException {
-
-    }
 }
-
     /* 코드업 1099번 문제
      * 2022-05-26
      * 2차원배열에서 먹이를 찾아 이동하기
