@@ -7,6 +7,90 @@ public class SearchDFS {
 }
 
     /*
+     * 2022-07-11
+     * 문제출저: 백준 2667번
+     * 문제: 그래프에서 영역 지정하고 개수 구하기
+     * 배울점: ArrayList를 사용해 2차원 행렬 형태로 노드들을 연결시켜주고 오름차순, 내림차순으로 정렬해준다.
+    static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    static int N = 0;
+    static int result = 0;
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
+
+    static void dfs(int x, int y){
+
+        //현재노드가 집이면 방문처리
+        if(graph.get(x).get(y) == 1) {
+            graph.get(x).set(y, 2);
+            result++;
+        }
+
+        //현재 노드에 대해 방문 체크
+        graph.get(x).set(y, 2);
+        result++;
+
+        //다음 4방향 노드에 대해
+        for(int i = 0; i < 4; i++){
+
+            //방향 이동 시도
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+
+            //이동할 수 없는 경우
+            if(nextX < 0 || nextY < 0 || nextX == N || nextY == N)
+                continue;
+
+            //다음 노드가 집이면 dfs수행
+            if(graph.get(nextX).get(nextY) == 1)
+                dfs(nextX,nextY);
+        }
+    }
+
+    public static void main(String args[]) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        N = Integer.parseInt(br.readLine()); //행렬가로세로 개수
+        ArrayList<Integer> home = new ArrayList<>();
+
+        //이차원 행렬 만들기
+        for(int i = 0; i < N; i++){
+            String str = br.readLine();
+            graph.add(new ArrayList<Integer>());
+            for(int j = 0; j < N; j++){
+                graph.get(i).add(str.charAt(j) - '0');
+            }
+        }
+
+        //모든원소를 탐색 하면서
+        for(int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                //집이면 dfs탐색을 시도한다
+                if(graph.get(i).get(j) == 1){
+                    result = 0; //집 개수 초기화
+                    dfs(i,j);
+                    home.add(result); //각 단지의 집 개수 담아두기
+                }
+            }
+        }
+
+        //오름차순 정렬
+        home.sort(Comparator.naturalOrder());
+
+        //출력준비
+        bw.write(home.size() + "\n");
+
+        for(int i = 0; i < home.size(); i++)
+            bw.write(home.get(i) + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+    /*
      * 2022-07-06
      * 문제출저: 백준 24479, 24480
      * 문제: 그래프를 DFS방법으로 탐색하여 각 노드의 방문순서를 알아내기

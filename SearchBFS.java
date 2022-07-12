@@ -6,7 +6,107 @@ import java.util.Queue;
 
 public class SearchBFS {
 
+
 }
+
+    /*
+     * 2022-07-11
+     * 문제출저: 백준 1260
+     * 문제: DFS와 BFS 기본
+     * 배울점: 스스로 구현해본 DFS 및 BFS 함수
+    static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    static boolean[] visitDFS;
+    static boolean[] visitBFS;
+    static StringBuilder sb = new StringBuilder();
+
+    public static void dfs(int start){
+        //현재 노드는 방문체크
+        visitDFS[start] = true;
+        sb.append(start + " ");
+
+        //연결된 노드들에 대하여 체크해보자
+        for(int i = 0; i < graph.get(start).size(); i++){
+
+            //다음 노드를 획득
+            int next = graph.get(start).get(i);
+
+            //다음 노드가 방문되지 않았다면
+            if(visitDFS[next] == false)
+                dfs(next);
+        }
+    }
+
+    public static void bfs(int start){
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        //현재 노드 방문체크 및 큐삽입
+        visitBFS[start] = true;
+        queue.offer(start);
+        sb.append(start + " ");
+
+        //큐가 빌때까지 반복
+        while(!queue.isEmpty()){
+            //타겟노드 꺼내오기
+            int target = queue.poll();
+
+            //타겟과 연결된 노드들을 보면서
+            for(int i = 0; i < graph.get(target).size(); i++){
+                int next = graph.get(target).get(i);
+
+                //다음노드는 방문 되었는지?
+                if(visitBFS[next] == false){
+                    visitBFS[next] = true;
+                    queue.offer(next);
+                    sb.append(next + " ");
+                }
+            }
+        }
+    }
+
+    public static void main(String args[]) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] str = br.readLine().split(" ");
+        int N = Integer.parseInt(str[0]);
+        int M = Integer.parseInt(str[1]);
+        int V = Integer.parseInt(str[2]);
+
+        visitDFS = new boolean[N+1];
+        visitBFS = new boolean[N+1];
+
+        //노드 수만큼 ArrayList 생성
+        for(int i = 0; i <= N; i++)
+            graph.add(new ArrayList<Integer>());
+
+        //간선 수만큼 반복하면서 그래프 생성
+        for(int i= 0; i < M; i++){
+            String[] line = br.readLine().split(" ");
+            int a = Integer.parseInt(line[0]);
+            int b = Integer.parseInt(line[1]);
+
+            graph.get(a).add(b);
+            graph.get(b).add(a);
+        }
+
+        //오름차순으로 정렬
+        for(int i = 0; i <= N; i++){
+            graph.get(i).sort(Comparator.naturalOrder());
+        }
+
+        //DFS수행
+        dfs(V);
+        sb.append("\n");
+
+        //BFS수행
+        bfs(V);
+
+        bw.write(sb.toString());
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
 
     /*
      * 2022-07-10
