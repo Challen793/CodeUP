@@ -1,10 +1,98 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class SearchDFS {
 
+
 }
+
+
+    /*
+     * 2022-07-17
+     * 문제출저: 백준 1012번
+     * 문제: 직사각형 그래프에서 영역 지정하고 개수 구하기
+     * 배울점: 직사각형 행렬일때 가로기준으로 1차원 리스트를 만들고 이후에 세로만큼 리스트를 달아준다.
+     *        출력할때 graph.get(j).get(i) 이런식으로 해줘야 함
+    static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    static int count = 2;
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
+    static int M, N;
+
+    public static void dfs(int x, int y) {
+
+        //배추 심겨져있으면
+        if (graph.get(x).get(y) == 1)
+            graph.get(x).set(y, count);
+
+        //상하좌우를 살펴본다
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+
+            //배열범위 체크
+            if (nextX < 0 || nextY < 0 || nextX == M || nextY == N)
+                continue;
+            //다음 노드에 배추가 있으면 dfs 수행
+            if(graph.get(nextX).get(nextY) == 1)
+                dfs(nextX, nextY);
+        }
+    }
+
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int T = Integer.parseInt(br.readLine());
+
+        //N회 반복하여 배추흰지렁이 수 출력
+        while (T-- > 0) {
+            String[] str = br.readLine().split(" ");
+            M = Integer.parseInt(str[0]); //가로길이
+            N = Integer.parseInt(str[1]); //세로길이
+            int K = Integer.parseInt(str[2]); //배추개수
+
+            //가로길이만큼 공간할당
+            for (int i = 0; i < M; i++) {
+                graph.add(new ArrayList<Integer>());
+                //세로길이만큼 공간할당
+                for (int j = 0; j < N; j++)
+                    graph.get(i).add(0);
+            }
+
+            //배추 심어주기
+            for (int i = 0; i < K; i++) {
+                String[] line = br.readLine().split(" ");
+                int x = Integer.parseInt(line[0]);
+                int y = Integer.parseInt(line[1]);
+                graph.get(x).set(y, 1);
+            }
+
+            //모든 땅에 대해 dfs를 수행
+            for (int i = 0; i < M; i++) {
+                for (int j = 0; j < N; j++) {
+                    if(graph.get(i).get(j) == 1) {
+                        dfs(i, j);
+                        count++;
+                    }
+                }
+            }
+
+            //애벌레 수를 기록
+            bw.write(count-2 + "\n");
+
+            //배추밭, 에벌레 초기화
+            graph.clear();
+            count = 2;
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+
 
     /*
      * 2022-07-11

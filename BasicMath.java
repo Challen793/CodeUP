@@ -5,6 +5,69 @@ public class BasicMath {
 }
 
     /*
+     * 2022-07-17
+     * 문제출저: 백준 2460문제
+     * 문제: 기차역에서 승객이 타고 내릴때 최대 승객수를 구하기
+     * 배울점:
+    public static void main(String args[]) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int temp = 0;
+        int max = 0;
+
+        //10회반복
+        for(int i = 0; i < 10; i++){
+            String[] str = br.readLine().split(" ");
+            temp = temp + Integer.parseInt(str[1]) - Integer.parseInt(str[0]);
+
+            if(max < temp)
+                max = temp;
+        }
+
+        bw.write(max + "");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+    /*
+     * 2022-07-17
+     * 문제출저: 백준 10818문제
+     * 문제: 입력받은 수 중에서 최소, 최대값 구하기
+     * 배울점:
+    public static void main(String args[]) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        String[] str = br.readLine().split(" ");
+
+        //첫번째 항 입력
+        int max = Integer.parseInt(str[0]);
+        int min = Integer.parseInt(str[0]);
+
+        //N개의 정수를 확인해가면서
+        for(int i = 1; i < N; i++){
+            int temp = Integer.parseInt(str[i]);
+
+            if(max < temp)
+                max = temp;
+
+            if(min > temp)
+                min = temp;
+        }
+
+        bw.write(min + " " + max);
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+    /*
      * 2022-07-13
      * 문제출저: 백준 3460문제
      * 문제: 십진수를 이진수로 변환하고 1의 위치를 출력하기
