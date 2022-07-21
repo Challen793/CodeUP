@@ -2,7 +2,34 @@ import java.io.*;
 
 public class BasicMath {
 
+
 }
+
+    /*
+     * 2022-07-18
+     * 문제출저: 백준 10870문제
+     * 문제: 피보나치 수열
+     * 배울점: 재귀적 풀이를 생각해낼 수 있음
+    public static int pibo(int n){
+        if(n == 0)
+            return 0;
+        else if(n == 1)
+            return 1;
+        else
+            return pibo(n-1) + pibo(n-2);
+    }
+
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        bw.write(pibo(Integer.parseInt(br.readLine()))+"");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
 
     /*
      * 2022-07-17
