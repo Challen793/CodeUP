@@ -2,14 +2,56 @@ import java.io.*;
 
 public class BasicMath {
 
-
 }
+
+    /*
+     * 2022-07-24
+     * 문제출저: 백준 2609문제
+     * 문제: 최대공약수, 최소공배수 구하기
+     * 배울점: 유클리드호제법을 재귀로 구현하여 최대공약수 구한 뒤, 최소공배수도 구할 수 있다.
+    public static int GCD(int a, int b){
+        if(b == 0)
+            return a;
+
+        return GCD(b, a % b);
+    }
+
+    public static int LCM(int a, int b){
+        return a * b / GCD(a,b);
+    }
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] str = br.readLine().split(" ");
+
+        int a = Integer.parseInt(str[0]);
+        int b = Integer.parseInt(str[1]);
+
+        //크기 맞춰 주기
+        if(b > a){
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        //최대공약수 구하기
+        bw.write(GCD(a, b) + "\n");
+
+        //최소공배수 구하기
+        bw.write(LCM(a, b) + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
 
     /*
      * 2022-07-18
      * 문제출저: 백준 10870문제
      * 문제: 피보나치 수열
-     * 배울점: 재귀적 풀이를 생각해낼 수 있음
+     * 배울점: 재귀적 풀이를 생각해낼 수 있음, 좀더 좋은 방법이 있음 → DP문제
     public static int pibo(int n){
         if(n == 0)
             return 0;
