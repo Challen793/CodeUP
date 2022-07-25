@@ -1,8 +1,36 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class BasicMath {
 
 }
+    /*
+     * 2022-07-25
+     * 문제출저: 백준 2693문제
+     * 문제: N번째로 큰 수 구하기
+     * 배울점: ArrayList 정렬로 쉽게 구현 가능
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        ArrayList<Integer> list = new ArrayList<>();
+        //N회 반복
+        while(N-- > 0){
+            String[] str = br.readLine().split(" ");
+            for(int i = 0; i < str.length; i++){
+                list.add(Integer.parseInt(str[i]));
+            }
+            list.sort(Comparator.reverseOrder());
+            bw.write(list.get(2) + "\n");
+            list.clear();
+        }
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
 
     /*
      * 2022-07-24
@@ -48,24 +76,35 @@ public class BasicMath {
     }*/
 
     /*
-     * 2022-07-18
+     * 2022-07-25
      * 문제출저: 백준 10870문제
      * 문제: 피보나치 수열
-     * 배울점: 재귀적 풀이를 생각해낼 수 있음, 좀더 좋은 방법이 있음 → DP문제
+     * 배울점: 재귀적 풀이를 생각해낼 수 있음, DP처럼 구현
+     *
+     static int[] dp;
+
     public static int pibo(int n){
         if(n == 0)
             return 0;
+
         else if(n == 1)
             return 1;
-        else
-            return pibo(n-1) + pibo(n-2);
+
+        else if(dp[n] == 0){
+            dp[n] = pibo(n-1) + pibo(n-2);
+        }
+
+        return dp[n];
     }
 
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        bw.write(pibo(Integer.parseInt(br.readLine()))+"");
+        int n = Integer.parseInt(br.readLine());
+        dp = new int[n+1];
+
+        bw.write(pibo(n)+"");
 
         bw.flush();
         bw.close();
