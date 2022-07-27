@@ -1,10 +1,73 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 
 public class BasicMath {
 
 }
+
+    /*
+     * 2022-07-27
+     * 문제출저: 백준 1978문제
+     * 문제: 소수 판별하기
+     * 배울점: Arrays.fill()함수로 배열의 모든 값을 채울 수 있다.
+     *        에라토스테네스의 체 - N의 제곱근까지만 반복해보면 된다.
+    static boolean[] primeNumber;
+
+    public static void determinePrime(int n){
+
+        //0,1제외하곤 모두 true로 채워두기
+        Arrays.fill(primeNumber, true);
+        primeNumber[0] = false;
+        primeNumber[1] = false;
+
+        //0,1은 소수가 아니므로 2부터시작
+        for(int i = 2; i <= Math.sqrt(n); i++){
+            //현재 숫자가 소수인 경우
+            if(primeNumber[i]){
+                //i를 제외한 i의 배수들은 모두 false
+                int j = 2;
+                while(i * j <= n){
+                    primeNumber[i*j] = false;
+                    j++;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        String[] str = br.readLine().split(" ");
+        int count = 0;
+        int max = 0;
+
+        //입력된 숫자중에서 가장 큰 숫자를 알아낸다.
+        for(int i = 0; i < N; i++){
+            int temp = Integer.parseInt(str[i]);
+            if(max < temp)
+                max = temp;
+        }
+
+        //에라토스테네스의 체를 활용하여 소수 배열 만들기
+        primeNumber = new boolean[max+1];
+        determinePrime(max);
+
+        //입력된 숫자들에 대해서 소수 여부 판단
+        for(int i = 0; i < N; i++){
+            int n = Integer.parseInt(str[i]);
+            if(primeNumber[n])
+                count++;
+        }
+
+        bw.write(count + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
     /*
      * 2022-07-25
      * 문제출저: 백준 2693문제
