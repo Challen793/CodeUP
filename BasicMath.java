@@ -1,9 +1,47 @@
 import java.io.*;
-import java.util.Arrays;
 
 public class BasicMath {
 
 }
+
+     /*
+     * 2022-07-28
+     * 문제출저: 백준 1292문제
+     * 문제: 12233344445555... 수열에서 구간 합 구하기
+     * 배울점: 투포인터 알고리즘이랑은 관련 없는듯
+     *        해당 수열의 배열을 만들었다가 굳이 배열 없이도 계산이 되므로 배열을 삭제함
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] str = br.readLine().split(" ");
+        int a = Integer.parseInt(str[0]);
+        int b = Integer.parseInt(str[1]);
+        int num = 1;
+        int index = 0;
+        int sum = 0;
+
+        while(index < b){
+            //num만큼 반복하면서 배열에 삽입
+            for(int i = 0; i < num; i++ ){
+                index++;
+                //a보다 같거나 크면 더하기 시작
+                if(a <= index)
+                    sum += num;
+                //종료조건
+                if(index == b)
+                    break;
+            }
+            num++;
+        }
+
+        bw.write(sum + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
 
     /*
      * 2022-07-27
