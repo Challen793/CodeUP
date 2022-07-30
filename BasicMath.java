@@ -1,9 +1,68 @@
 import java.io.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BasicMath {
 
 }
+
+     /*
+     * 2022-07-30
+     * 문제출저: 백준 2581문제
+     * 문제: M과 N사이의 소수 찾아서 최소값과 합 구하기
+     * 배울점: 에라토스테네스의 체 안보고 구현하기
+    static boolean[] prime;
+
+    public static void makePrime(int N){
+        //사전준비
+        Arrays.fill(prime, true);
+        prime[0] = false;
+        prime[1] = false;
+
+        //2부터 체로 걸러내기 시작
+        for(int i = 2; i <= Math.sqrt(N); i++){
+            //i가 솟수가 아니면 체로 걸래낼 필요도 없음
+            if(!prime[i])
+                continue;
+
+            //본인 제외 i의 배수들은 싹다 true로 변경
+            int start = i*2;
+            while(start <= N){
+                prime[start] = false;
+                start += i;
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int M = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        prime = new boolean[N+1];
+        int sum = 0;
+        int min = 10000;
+
+        //1부터 N까지 솟수를 구하기
+        makePrime(N);
+
+        //M부터 N까지순회하면서 sum과 min을 구한다.
+        for(int i = M; i <= N; i++){
+            //솟수인 경우
+            if(prime[i]){
+                //합치기
+                sum += i;
+
+                //최소값 판단
+                min = min > i ? i : min;
+            }
+        }
+
+        bw.write(sum == 0 ? "-1" : sum + "\n" + min);
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
 
      /*
      * 2022-07-30
