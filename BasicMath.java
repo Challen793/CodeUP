@@ -1,8 +1,57 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class BasicMath {
 
 }
+
+     /*
+     * 2022-07-30
+     * 문제출저: 백준 14915문제
+     * 문제: N진법으로 변환하기
+     * 배울점: 최초 입력된 M이 0인 경우는 예외처리 해줘야 한다
+     *        2 / 6 = 0 이고, 2 % 6 = 2 이다
+    //M을 N진수로 바꿔주는 함수
+    public static String conversion(int M, int N){
+        StringBuilder sb = new StringBuilder();
+        ArrayList<Integer> list = new ArrayList<>();
+
+        //M이 0인경우 진법변환 수행하지 않는다.
+        if(M == 0)
+            return "0";
+
+        //N진수로 변환하기
+        while(M > 0){
+            int num = M % N;
+            //10보다 큰 수는 문자로 치환
+            if(num >= 10){
+                char ch = 55; //치환되기 위한 문자
+                ch += num;
+                sb.append(ch);
+            }
+            else
+                sb.append(num);
+
+            M = M / N;
+        }
+        return sb.reverse().toString();
+    }
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] str = br.readLine().split(" ");
+        int M = Integer.parseInt(str[0]);
+        int N = Integer.parseInt(str[1]);
+        ArrayList<Integer> list = new ArrayList<>();
+
+        bw.write(conversion(M,N));
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
 
      /*
      * 2022-07-28
