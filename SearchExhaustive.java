@@ -8,6 +8,71 @@ public class SearchExhaustive {
      * 2022-07-31
      * 문제출저: 백준 14888번
      * 문제: 수열에 주어진 연산자를 끼워 넣어보면서 최대, 최소가 되는 경우의 값 구하기
+     * 배울점: 순열이랑 비슷하게 완전탐색 하면서 선택된 연산자에 대해서 바로 계산
+     *        Ingeter.MIN_VALUE, Integer.MAX_VALUE 사용
+     *
+    static int[] operator;
+    static int[] num;
+    static int N;
+    static int max = Integer.MIN_VALUE;
+    static int min = Integer.MAX_VALUE;
+
+    public static void exhaustiveSearch(int result, int index){
+        //종료 조건
+        if(index == N){
+            max = max < result ? result : max;
+            min = min > result ? result : min;
+            return;
+        }
+
+        //매번 operator길이만큼 찾아본다.
+        for(int i = 0; i < 4; i++){
+            //선택
+            if(operator[i] > 0){
+                operator[i]--; //현재 연산자를 선택하고 다음 연산을 수행한다.
+
+                if(i == 0)  exhaustiveSearch(result + num[index], index+1);
+                else if(i == 1)  exhaustiveSearch(result - num[index], index+1);
+                else if(i == 2)  exhaustiveSearch(result * num[index], index+1);
+                else if(i == 3)  exhaustiveSearch(result / num[index], index+1);
+
+                operator[i]++; //현재 선택된 연산 수행이 끝나면 다시 선택 안된 상태로 되돌려준다.
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        N = Integer.parseInt(br.readLine());
+        operator = new int[4];
+        num = new int[N];
+
+        //수열 만들기
+        String[] str = br.readLine().split(" ");
+        for (int i = 0; i < N; i++)
+            num[i] = Integer.parseInt(str[i]);
+
+        //연산자 배열 만들기
+        str = br.readLine().split(" ");
+        for (int i = 0; i < 4; i++)
+            operator[i] = Integer.parseInt(str[i]);
+
+        //완전탐색 하면서 숫자를 연산해나가자
+        exhaustiveSearch(num[0], 1);
+
+        bw.write(max + "\n" + min);
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+     */
+
+    /*
+     * 2022-07-31
+     * 문제출저: 백준 14888번
+     * 문제: 수열에 주어진 연산자를 끼워 넣어보면서 최대, 최소가 되는 경우의 값 구하기
      * 배울점: 모든 입력받은 연산자를 배열에 담고 순열(줄세우기) 함수를 호출하는 식으로 해결 함.
      *        완전탐색 재귀 - 백트래킹 방식으로 구현하는 방법이 있던데..
      *        순열 함수랑 로직은 비슷하지만 isChecked가 필요없는 방식임
