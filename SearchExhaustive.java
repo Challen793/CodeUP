@@ -1,12 +1,97 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import static java.lang.System.exit;
 
 public class SearchExhaustive {
 
 }
+
+    /*
+     * 2022-07-31
+     * 문제출저: 백준 14888번
+     * 문제: 수열에 주어진 연산자를 끼워 넣어보면서 최대, 최소가 되는 경우의 값 구하기
+     * 배울점: 모든 입력받은 연산자를 배열에 담고 순열(줄세우기) 함수를 호출하는 식으로 해결 함.
+     *        완전탐색 재귀 - 백트래킹 방식으로 구현하는 방법이 있던데..
+     *        순열 함수랑 로직은 비슷하지만 isChecked가 필요없는 방식임
+    static boolean[] isChecked;
+    static char[] answer;
+    static char[] operator;
+    static int[] num;
+    static int N;
+    static int max = -1000000000;
+    static int min = 1000000000;
+
+    public static void permutaion(int cnt){
+
+        //재귀함수 종료조건
+        if(cnt == N-1){
+            //줄 세웠으니 계산 해보자
+            int result = num[0];
+            for(int i = 0; i < N-1; i++){
+                int a = num[i+1];   //사용할 숫자
+                char ch = answer[i]; //사용할 연산자
+
+                if( ch == '+')
+                    result += a;
+                else if( ch == '-')
+                    result -= a;
+                else if( ch == '*')
+                    result *= a;
+                else if( ch == '/')
+                    result /= a;
+            }
+
+            //max와 min판단하여 넣어주기
+            max = max < result ? result : max;
+            min = min > result ? result : min;
+            return;
+        }
+
+        for(int i = 0; i < N-1; i++){
+            //뽑혀있는지 확인
+            if(isChecked[i])
+                continue;
+
+            isChecked[i] = true;
+            answer[cnt] = operator[i];
+            permutaion(cnt + 1);
+            isChecked[i] = false;
+        }
+    }
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        N = Integer.parseInt(br.readLine());
+        isChecked = new boolean[N-1];
+        answer = new char[N-1];
+        operator = new char[N-1];
+        num = new int[N];
+
+        //수열 만들기
+        String[] str = br.readLine().split(" ");
+        for(int i = 0; i < N; i++)
+            num[i] = Integer.parseInt(str[i]);
+
+        //연산자 배열 만들기
+        str = br.readLine().split(" ");
+        int index = 0;
+        for(int i = 0; i < 4; i++){
+            int temp = Integer.parseInt(str[i]);
+            char ch = i == 0 ? '+' : i == 1 ? '-' : i == 2 ? '*' : i == 3 ? '/' : 0;
+
+            for(int j = 0; j < temp; j++)
+                operator[index++] = ch;
+        }
+
+        //순열을 탐색하는 재귀함수 구현
+        permutaion(0);
+
+        bw.write(max + "\n" + min);
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
 
     /*
      * 2022-07-24
