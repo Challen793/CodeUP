@@ -1,10 +1,46 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Greedy {
 
 }
+
+     /*
+     * 2022-08-05
+     * 문제출저: 코드업 11047번
+     * 문제: 동전문제 혹은 거스름돈 문제
+     * 배울점: 그리디의 기초 문제인듯
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] str = br.readLine().split(" ");
+        int N = Integer.parseInt(str[0]);
+        int K = Integer.parseInt(str[1]);
+        ArrayList<Integer> list = new ArrayList<>();
+        int count = 0;
+        int money = 0;
+
+        for(int i = 0; i < N; i++)
+            list.add(Integer.parseInt(br.readLine()));
+
+        //큰 동전부터 최대로 넣기
+        for(int i = N-1; i >=0; i--){
+            int token = list.get(i);
+
+            count += K / token; //현재 동전으로 최대 몇개까지 제출 가능한지
+            K %= token; //현재 동전으로 제출 후 남은 값
+
+            if(K == 0)
+                break;
+        }
+
+        bw.write(count + "");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
     /*
      * 2022-06-15
      * 문제출저: 코드업 3120문제
