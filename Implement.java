@@ -6,6 +6,86 @@ public class Implement {
 }
 
     /*
+     * 2022-08-07
+     * 문제출저: 동빈나 구현 강의
+     * 문제: 문자열에서 알파벳은 순서대로정렬하고 숫자는 합산하여 마지막에 출력하기
+     * 배울점:
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = br.readLine();
+        ArrayList<Character> list = new ArrayList<>();
+        int result = 0;
+
+        //문자열 처음부터 끝까지 반복하면서
+        for(int i = 0; i < str.length(); i++){
+            char ch = str.charAt(i);
+
+            if(ch >= 65) //알파벳
+                list.add(ch);
+            else //숫자
+                result += ch - '0';
+        }
+
+        //오름차순 정렬
+        list.sort(Comparator.naturalOrder());
+
+        //순서대로 출력하기
+        for(int i = 0; i < list.size(); i++)
+            bw.write(list.get(i));
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+    /*
+     * 2022-08-07
+     * 문제출저: 동빈나 구현 강의
+     * 문제: 8*8 체스판에서 나이트가 움직일 수 있는 경우의 수
+     * 배울점: 문자 a를 숫자 0으로 치환하려면 -'a' 문자 1을 숫자로 치환하려면 -'0'
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int[] dx = {-2,-2,2,2,-1,1,-1,1};
+        int[] dy = {-1,1,-1,1,-2,-2,2,2};
+        String str = br.readLine();
+        int count = 0;
+
+        //x좌표 치환
+        int x = str.charAt(1) - '0'-1;
+
+        //y좌표 치환
+        int y = str.charAt(0) - 'a';
+
+        System.out.println("현재좌표: " + x + ", " + y);
+
+        //다음 좌표 알아내기
+        for(int i = 0; i < 8; i++){
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+
+            //배열 넘어가는지 확인
+            if(nextX < 0 || nextY < 0 || nextX == 8 || nextY == 8)
+                continue;
+
+            //이동 가능하면 카운트 증가
+            count++;
+        }
+
+        bw.write(count + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+    /*
      * 2022-08-02
      * 문제출저: 동빈나 구현 강의
      * 문제: 시분초에서 3이 포함된 경우의 수 구하기
