@@ -1,9 +1,32 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.math.BigInteger;
 
 public class Basic100  {
 
+    static int[] piboNum;
+
+    public static int pibo(int N){
+        //0과 1은 따로 처리해준다.
+        if(N == 0 || N == 1){
+            piboNum[N] = N;
+            return N;
+        }
+
+        //아직 값이 없는 항이면 계산해준다.
+        if(piboNum[N] == 0)
+            piboNum[N] = pibo(N - 2) + pibo(N - 1);
+
+        return piboNum[N];
+    }
+
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        piboNum = new int[N+1];
+
+        //N항까지 피보나치 수를 구한다.
+        System.out.println(pibo(N));
+    }
 }
     /* 코드업 1099번 문제
      * 2022-05-26

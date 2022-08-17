@@ -1,6 +1,40 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class SearchExhaustive {
+
+    public static int[] operator = {1, 0, 2, 1};
+    public static char[] answer = new char[4];
+
+    public static void exhaustiveSearch(int level){
+        //재귀종료 조건
+        if(level == 4){
+            System.out.println(Arrays.toString(answer));
+            return;
+        }
+
+        //완전탐색이면 무조건 처음부터 끝까지 반복
+        for(int i = 0; i < 4; i++){
+            //다 썼으면 넘어간다.
+            if(operator[i] == 0)
+                continue;
+
+            operator[i]--;
+            answer[level] = i == 0 ? '+' : i == 1 ? '-' : i == 2 ? '*' : i == 3 ? '/' : ' ';
+            exhaustiveSearch(level+1);
+            operator[i]++;
+        }
+    }
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        exhaustiveSearch(0);
+
+    }
+
+
 
 }
 
