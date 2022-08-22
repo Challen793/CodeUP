@@ -6,6 +6,43 @@ public class DynamicProgramming {
 }
 
     /*
+     * 2022-08-22
+     * 문제출저: 백준 2839번 문제
+     * 문제: 설탕 배달, 설탕 5kg, 3kg 으로 담을 때 개수가 최소한으로 되도록
+     * 배울점: 수학적으로 풀어도 되지만 DP연습할겸 풀어 봄
+     *        i-3, i-5와 같은 연산을 하기전에 해도되는지 검사해보도록 한다.
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        int[] dp = new int[N+1];
+
+        dp[0] = 0;
+
+        for(int i = 1; i <= N; i++){
+            int min = 9999;
+            //3을 빼도 되는지
+            if(i-3 >= 0)
+                min = Integer.min(min, dp[i-3]);
+            //5를 빼도 되는지
+            if(i-5 >= 0)
+                min = Integer.min(min, dp[i-5]);
+
+            min = min == 9999 ? min : min+1;
+            dp[i] = min;
+        }
+
+        System.out.println(dp[N] == 9999 ? -1 : dp[N]);
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+    /*
      * 2022-08-15
      * 문제출저: 동빈나 DP 강의
      * 문제: 병사 줄세우기. 전투력 내림차순 이면서, 병사수를 최대로 하고싶을때 몇명인지 구하기
