@@ -3,56 +3,6 @@ import java.util.Stack;
 
 public class StackDS {
 
-    static Stack<Character> stack = new Stack<>();
-
-    public static boolean isValidate(String str){
-
-        if(str.length() <= 1)
-            return false;
-
-        //반복하면서 정당한 배열인지 확인
-        for(int i = 0; i < str.length(); i++){
-            char ch = str.charAt(i);
-
-            if(ch == '(' || ch == '[') //열린괄호는 바로 넣기
-                stack.push(ch);
-
-            else if(ch == ')' || ch == ']') {
-                if(stack.isEmpty())
-                    return false;
-
-                if(ch == ')' && stack.pop() == '(')
-                    continue;
-                else if(ch == ']' && stack.pop() == '[')
-                    continue;
-                else
-                    return false;
-            }
-        }
-
-        return stack.isEmpty() ? true : false;
-    }
-
-    public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        while(true) {
-            String str = br.readLine();
-
-            if (!isValidate(str))
-                bw.write("0");
-
-            else {
-                bw.write("1");
-            }
-
-            bw.flush();
-            stack.clear();
-        }
-
-
-    }
 }
 
     /* 2022-06-30

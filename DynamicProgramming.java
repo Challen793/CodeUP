@@ -6,6 +6,121 @@ public class DynamicProgramming {
 }
 
     /*
+     * 2022-08-28
+     * 문제출저: 백준 9184번, 신나는 함수 실행
+     * 문제: 복잡한 재귀함수에 DP를 적용시키기
+     * 배울점: 복잡해 보이지만 w(a,b,c)에 대한 값만 미리 계산해서 배열에 넣어두면 된다. 
+     *        a b c 가 0보다 작거나 20보다 큰 경우는 값이 정해져 있기 때문에 배열 공간은 21까지만 생성한다.
+     *        계산된 값이 있으면 바로 리턴해 주고, 없으면 원래 로직대로 계산해 보는게 핵심
+    static int count = 0;
+    static int[][][] dp = new int[21][21][21];
+
+    //w재귀함수
+    public static int w(int a, int b, int c){
+
+        //구해놓은게 있으면 바로 리턴
+        if(a >= 0 && b >= 0 && c >= 0 && a <= 20 && b <= 20 && c <= 20 && dp[a][b][c] > 0)
+            return dp[a][b][c];
+
+        //-----여기 이후는 a b c 가 음수이거나 구해놓은게 없는 경우-----
+
+        if(a <= 0 || b <= 0 || c <= 0)
+            return 1;
+
+        //-----여기 이후는 a b c 가 자연수인 경우임-----
+
+        if(a > 20 || b > 20 || c > 20){
+            dp[20][20][20] = (dp[20][20][20] == 0) ? w(20,20,20) : dp[20][20][20];
+            return dp[20][20][20];
+        }
+
+        //-----여기 이후는 a b c 가 20이하의 자연수-----
+
+        if(a < b && b < c){
+            dp[a][b][c] = w(a,b,c-1) + w(a,b-1,c-1) - w(a,b-1,c);
+            return dp[a][b][c];
+        }
+
+        dp[a][b][c] = w(a-1,b,c) + w(a-1,b-1,c) + w(a-1,b,c-1) - w(a-1,b-1,c-1);
+        return dp[a][b][c];
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        while(true){
+            String[] str = br.readLine().split(" ");
+            int a = Integer.parseInt(str[0]);
+            int b = Integer.parseInt(str[1]);
+            int c = Integer.parseInt(str[2]);
+
+            if(a==-1 && b==-1 && c==-1)
+                break;
+
+            bw.write("w(" + a + ", " + b + ", " + c + ") = " + w(a,b,c) + "\n");
+        }
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+    /*
+     * 2022-08-28
+     * 문제출저: 백준 24416번, DP로 피보나치 수열 구현
+     * 문제: 일반 피보나치 수열과 DP 피보나치 수열의 속도를 비교
+     * 배울점: DP피보나치는 재귀(탑다운)로 구현할 수도 있지만, for문(바텀업)으로 구현할 수도 있다.
+    static int count = 0;
+    static int[] dp;
+
+    //일반 피보나치
+    public static int fibo(int n){
+        if(n == 1 || n == 2){
+            count++;
+            return 1;
+        }
+
+        return fibo(n-1) + fibo(n-2);
+    }
+
+
+    //DP 피보나치
+    public static int fibonacci(int n){
+
+        dp[1] = 1;
+        dp[2] = 1;
+
+        for(int i = 3; i <= n; i++){
+            dp[i] = dp[i-1] + dp[i-2];
+            count++;
+        }
+
+        return dp[n];
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int n = Integer.parseInt(br.readLine());
+        dp = new int[n+1];
+
+        fibo(n);
+        bw.write(count + " ");
+        count  = 0;
+        fibonacci(n);
+        bw.write(count + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+    /*
      * 2022-08-22
      * 문제출저: 백준 2839번 문제
      * 문제: 설탕 배달, 설탕 5kg, 3kg 으로 담을 때 개수가 최소한으로 되도록

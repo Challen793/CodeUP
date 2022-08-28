@@ -3,40 +3,96 @@ import java.util.Arrays;
 
 public class SearchExhaustive {
 
-    public static int[] operator = {1, 0, 2, 1};
-    public static char[] answer = new char[4];
+}
 
-    public static void exhaustiveSearch(int level){
-        //재귀종료 조건
-        if(level == 4){
-            System.out.println(Arrays.toString(answer));
-            return;
-        }
-
-        //완전탐색이면 무조건 처음부터 끝까지 반복
-        for(int i = 0; i < 4; i++){
-            //다 썼으면 넘어간다.
-            if(operator[i] == 0)
-                continue;
-
-            operator[i]--;
-            answer[level] = i == 0 ? '+' : i == 1 ? '-' : i == 2 ? '*' : i == 3 ? '/' : ' ';
-            exhaustiveSearch(level+1);
-            operator[i]++;
-        }
-    }
-
-    public static void main(String[] args) throws IOException{
+    /*
+     * 2022-08-28
+     * 문제출저: 백준 2798번, 블랙잭
+     * 문제: N개의 카드 중 3개를 뽑아 M의 값에 최대한 가깝게 만들기
+     * 배울점: 3개의 카드를 뽑기 때문에 3중 for문으로 구현
+     *        꼭 3개 다 뽑아보지 않고 1개, 2개일때 부터 M을 넘어가면 다음카드 뽑도록 나름의 백트래킹을 녹임
+     *        combination(N,3) 함수를 작성해서 풀 수도 있을듯
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] str = br.readLine().split(" ");
+        int N = Integer.parseInt(str[0]);
+        int M = Integer.parseInt(str[1]);
+        str = br.readLine().split(" ");
+        int[] arr = new int[N];
+        int max = 0;
 
-        exhaustiveSearch(0);
+        //카드 배열 작성
+        for (int i = 0; i < N; i++)
+            arr[i] = Integer.parseInt(str[i]);
 
-    }
+
+        //첫번째 카드 골라보기
+        for (int i = 0; i < N; i++) {
+            //첫번째 카드가 M보다 크면 스킵
+            if (arr[i] > M)
+                continue;
+            //두번째 카드 골라보기
+            for (int j = i + 1; j < N; j++) {
+                //첫번째,두번쨰 카드가 M보다 크면 스킵
+                if (arr[i] + arr[j] > M)
+                    continue;
+                //세번째 카드 골라보기
+                for (int k = j + 1; k < N; k++) {
+                    //세장의 카드 i,j,k의 합
+                    int sum = arr[i] + arr[j] + arr[k];
+
+                    //3장의 카드가 M보다 크면 스킵
+                    if (sum > M)
+                        continue;
+
+                    //최대값 갱신
+                    max = (max < sum) ? sum : max;
+                }
+            }
+        }
+
+        bw.write(max + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
 
 
+    /*
+     * 2022-08-28
+     * 문제출저: 백준 2231번, 분해합
+     * 문제: 특정 숫자에 대해서 생성자를 구하기
+     * 배울점: 1부터 특정 숫자까지 분해합을 구해보는 브루트포스 알고리즘
+    public static void main(String[] args) throws IOException {
 
-}
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int N = Integer.parseInt(br.readLine());
+
+        //1부터 N까지 분해합을 구해본다.
+        for(int k = 1; k <= N; k++){
+            String number = Integer.toString(k);
+            int sum = k;
+            for(int i = 0; i < number.length(); i++)
+                sum += number.charAt(i) - '0';
+
+            //N의 생성자를 찾은 경우
+            if(sum == N){
+                bw.write(k + "\n");
+                break;
+            }
+
+            //마지막까지 못 찾은 경우
+            if(k == N)
+                bw.write("0\n");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
 
     /*
      * 2022-07-31

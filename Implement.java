@@ -5,6 +5,114 @@ public class Implement {
 
 }
 
+
+    /*
+     * 2022-08-28
+     * 문제출저: 백준 2941번, 크로아티아 알파벳
+     * 문제: 기존 알파벳에 c= c- dz= d- lj nj s= z= 알파벳을 포함한 총 알파벳 개수 구하기
+     * 배울점: 어려운 알고리즘은 아니지만 if문이 너무 많아져 복잡한 문제
+     *        평번한 문자의 개수를 카운트하고 =, -, j 를 만났을때 스킵을 할지 카운트를 낮출지  판단
+     *        스킵 할거 다 하고 마지막까지 도달 했을 때 카운트를 증가시키는게 핵심
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = br.readLine();
+        int count  = 0;
+        int ch = 0;
+
+        //문자를 하나씩 탐색
+        for(int i = 0; i < str.length(); i++){
+            ch = str.charAt(i);
+
+            if(ch == '-') //  바로 스킵
+                continue;
+
+            if(ch == 'j'){
+                char before = (i > 0) ? str.charAt(i-1) : ' ';
+                if(before == 'n' || before == 'l') //nj랑 lj는 스킵
+                    continue;
+            }
+
+            if(ch == '='){
+                char before = (i > 0) ? str.charAt(i-1) : ' ';
+                char twoBefore = (i > 1) ? str.charAt(i-2) : ' ';
+
+                if(twoBefore == 'd' && before == 'z'){ //dz= 이면 카운트 감소후 스킵
+                    count--;
+                    continue;
+                }
+
+                if(before == 'c' || before == 's' || before == 'z') //c=, s= 스킵
+                    continue;
+            }
+
+            //여기까지 도달했으면 일반 문자
+            count++;
+        }
+        bw.write(count + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+    /*
+     * 2022-08-28
+     * 문제출저: 백준 1316번 문제
+     * 문제: 그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다.
+     * 배울점: 소문자 알파벳에 대해 배열을 만들고 나타났었는지 체크를 한다.
+     *        연속으로 나타나는 문자는 스킵하고 이전과 다른 문자가 들어올때 체크로직을 수행한다.
+    static boolean[] check = new boolean[27];
+
+    public static int isGroup(String str){
+
+        //체크 배열 초기화
+        Arrays.fill(check, false);
+
+        //첫번째 항 넣어주기
+        char ch = str.charAt(0);
+        check[ch-'a'] = true;
+
+        //1부터 끝까지 돌면서
+        for(int i = 1; i < str.length(); i++){
+            char next = str.charAt(i);
+
+            //같은 문자면 그냥 넘김
+            if(ch == next)
+                continue;
+
+            //문자가 달라지면
+            if(check[next-'a'])
+                return 0;
+
+            ch = next; //기준문자를 바꿔주고
+            check[ch-'a'] = true; //새로운 문자를 체크
+        }
+
+        return 1;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int N = Integer.parseInt(br.readLine());
+        int count = 0;
+
+
+        for(int i = 0; i < N; i++){
+            String str = br.readLine();
+            count += isGroup(str);
+        }
+
+        bw.write(count + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
     /*
      * 2022-08-07
      * 문제출저: 동빈나 구현 강의
