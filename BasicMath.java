@@ -5,6 +5,37 @@ public class BasicMath {
 
 }
 
+    /*
+     * 2022-08-30
+     * 문제출저: 백준 11050번, 이항계수1
+     * 문제: 조합의 경우의 수 구하기
+     * 배울점: 별다른 공식 없이 단순하게 조합의 경우의 수 구하기
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] str = br.readLine().split(" ");
+        int N = Integer.parseInt(str[0]);
+        int K = Integer.parseInt(str[1]);
+        int son = 1;
+        int mom = 1;
+
+        //K번 반복한다.
+        for(int i = 0; i < K; i++)
+            son *= N--;
+
+        //1이될때까지 반복한다.
+        while(K > 0)
+            mom *= K--;
+
+        int result = son / mom;
+
+        bw.write(result + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
      /*
      * 2022-07-30
      * 문제출저: 백준 2581문제

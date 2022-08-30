@@ -6,6 +6,148 @@ public class DynamicProgramming {
 }
 
     /*
+     * 2022-08-30
+     * 문제출저: 백준 11051번, 이항계수2
+     * 문제: 매우 큰 조합의 경우의 수 구하기
+     * 배울점: 파스칼의 삼각형 공식: nCr = n-1Cr + n-1Cr-1
+     *        다이나믹프로그래밍 바텀업, 탑다운 방식으로 풀이 가능
+     *        매우 큰 수이므로 모듈라 조건을 넣음
+    static int[][] dp;
+
+    //nCr의 개수를 구해주는 재귀함수
+    public static int pascal(int n, int r){
+        //이미 계산되어 있는거면 바로 리턴
+        if(dp[n][r] > 0)
+            return dp[n][r];
+
+        if(n == r || r == 0)
+            dp[n][r] = 1;
+        else
+            dp[n][r] = (pascal(n-1,r-1) + pascal(n-1,r)) % 10007;
+
+        return dp[n][r];
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String[] str = br.readLine().split(" ");
+        int n = Integer.parseInt(str[0]);
+        int r = Integer.parseInt(str[1]);
+        dp = new int[n+1][];
+
+        //필요한 만큼만 2차원 공간 할당
+        for(int i=0; i<=n; i++)
+            dp[i] = new int[i+1];
+
+        //바텀업 방식
+        for(int i = 0; i <= n; i++){
+            for(int j = 0; j <= i; j++){
+                //1주는 조건
+                if(j == 0 || j == i)
+                    dp[i][j] = 1;
+                else
+                    dp[i][j] = (dp[i-1][j-1] + dp[i-1][j]) % 10007;
+            }
+        }
+
+        bw.write(dp[n][r] + "\n");
+
+        //탑다운 방식
+        //System.out.println(pascal(n,r));
+
+        //배열 출력해보기
+        //for(int i=0; i<=n; i++)
+        //	System.out.println(Arrays.toString(dp[i]));
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+    /*
+     * 2022-08-30
+     * 문제출저: 백준 9461번, 파도반 수열
+     * 문제: 삼각형을 나선형으로 추가할때 가장 긴 변의 길이 구하기
+     * 배울점: 케이스를 그려 나가면 피보나치와 비슷한 점화식을 끌어낼 수 있다.
+     *        An = An-1 + An-5
+    static long[] dp;
+
+    public static long padovan(int N){
+        //계산 했던거면 바로 리턴
+        if(dp[N] > 0)
+            return dp[N];
+
+        if(N == 1 || N == 2 || N == 3)
+            dp[N] = 1;
+        else if(N == 4 || N== 5)
+            dp[N] = 2;
+        else
+            dp[N] = padovan(N-1) + padovan(N-5);
+
+        return dp[N];
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num = Integer.parseInt(br.readLine());
+
+        //100항 까지 수행
+        dp = new long[101];
+        padovan(100);
+
+        //입력된 항을 출력
+        while(num-- > 0){
+            int N = Integer.parseInt(br.readLine());
+            bw.write(dp[N] + "\n");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+    /*
+     * 2022-08-30
+     * 문제출저: 백준 1904번, 01타일
+     * 문제: 00타일과 1타일을 조합할 수 있는 경우의 수
+     * 배울점: 6항 정도까지 계산해보면 피보나치 수열임을 알 수 있다.
+     *        매우 큰 수를 구해야 하므로 모듈라 조건을 주는데, dp[N]을 구할때 적용하면 된다
+     *        (a + b) % m = (a % m + b % m ) % m
+    static int[] dp;
+
+    public static int fibo(int N){
+        //계산 했던거면 바로 리턴
+        if(dp[N] > 0)
+            return dp[N];
+
+        if(N == 1 || N == 2)
+            dp[N] = 1;
+        else
+            dp[N] = (fibo(N-1) + fibo(N-2)) % 15746;
+
+        return dp[N];
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int N = Integer.parseInt(br.readLine());
+        dp = new int[N+2];
+
+        bw.write(fibo(N+1) + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
+
+    /*
      * 2022-08-28
      * 문제출저: 백준 9184번, 신나는 함수 실행
      * 문제: 복잡한 재귀함수에 DP를 적용시키기
