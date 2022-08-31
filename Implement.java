@@ -5,6 +5,73 @@ public class Implement {
 
 }
 
+    /*
+     * 2022-08-31
+     * 문제출저: 백준 2447번, 별찍기-10
+     * 문제: 재귀적인 패턴으로 별찍기
+     * 배울점: 2차원 배열을 사용하여 별 또는 공백을 넣어줌
+     *        출발지점(꼭지점)을 기준으로 좌표가 어떻게 반복 되는지 패턴을 찾아본다.
+    static char[][] matrix;
+
+    public static void star(int x, int y, int N, boolean blank){
+
+        //공백을 넣어주는 경우
+        if(blank){
+            //N=3, x=3,y=3, true
+            //N=1, x=1,y=1, true
+            for(int i = x; i < x+N; i++){
+                for(int j = y; j < y+N; j++)
+                    matrix[i][j] = ' ';
+            }
+            return;
+        }
+
+        //*을 넣어주는 경우
+        if(N == 1){
+            matrix[x][y] = '*';
+            return;
+        }
+
+        //다음 재귀함수를 호출해야하는 경우
+        int size = N/3;
+        int count = 0;
+
+        //N=9 size=3 일때, (0 0)(0 3)(0 6)(3 0)(3 3)(3 6)(6 0)(6 3)(6 6)을 순회 해야 함
+        //N=3 size=1 일때, (0 0)(0 1)(0 2)(1 0)(1 1)(1 2)(2 0)(2 1)(2 2)을 순회 해야 함
+        //N=3 size=1 일때, (3 0)(3 1)(3 2)(4 0)(4 1)(4 2)(5 0)(5 1)(5 2)을 순회 해야 함
+        for(int i = x; i < x+N; i += size){
+            for(int j = y; j < y+N; j += size){
+                count++;
+                if(count == 5)
+                    star(i, j, size, true);
+                else
+                    star(i, j, size, false);
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        matrix = new char[N][N];
+
+        star(0, 0, N, false);
+
+        //matrix 출력하기
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < N; j++)
+                bw.write(matrix[i][j]);
+            bw.write("\n");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }*/
+
+
 
     /*
      * 2022-08-28
